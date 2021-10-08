@@ -1,7 +1,7 @@
 import React from "react";
 import { LineChart, Line, XAxis, Tooltip, CartesianGrid } from 'recharts'
 
-class Chart extends React.Component {
+class Chart extends React.Component<{}, { isLoaded: boolean, data: any[] }> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -27,27 +27,20 @@ class Chart extends React.Component {
             })
         })
         .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-        /*
         .then((result) => {
             this.setState({
                 isLoaded: true,
-                data: result.nedbetalingsplan
-            })
+                data: result.nedbetalingsplan.innbetalinger
+            });
+            console.log("Got " + this.state.data.length + " innbetalinger, first is " + JSON.stringify(this.state.data[0]))
         })
-        */
+        .catch((error) => {
+            console.error('Error:', error);
+          });
     }
 
     render() {
-        const data = [
-            {name: 'Page A', uv: 400, pv: 2400, amt: 2400},
-            {name: 'Page B', uv: 600, pv: 2200, amt: 2200},
-            {name: 'Page C', uv: 200, pv: 1600, amt: 2600}];
+        const data = this.state.data.slice(1);
             
         return (
             <LineChart
@@ -56,11 +49,10 @@ class Chart extends React.Component {
             data={data}
             margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
         >
-            <XAxis dataKey="name" />
+            <XAxis dataKey="dato" />
             <Tooltip />
             <CartesianGrid stroke="#f5f5f5" />
-            <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} />
-            <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />
+            <Line type="monotone" dataKey="innbetaling" stroke="#ff7300" yAxisId={0} />
         </LineChart>
       );
     }
