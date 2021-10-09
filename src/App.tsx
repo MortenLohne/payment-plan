@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <DataEntry/>
-        <Chart/>
+        <Chart loanAmount={3000000} expirationYear={2046} interest={3.0}/>
       </div>
     );
 }

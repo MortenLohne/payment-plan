@@ -1,8 +1,10 @@
 import React from "react";
 import { LineChart, Line, XAxis, Tooltip, CartesianGrid } from 'recharts'
 
-class Chart extends React.Component<{}, { isLoaded: boolean, data: any[] }> {
-    constructor(props: any) {
+type Props = {loanAmount: number, expirationYear: number, interest: number}
+
+class Chart extends React.Component<Props, { isLoaded: boolean, data: any[] }> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             isLoaded: false,
@@ -17,12 +19,12 @@ class Chart extends React.Component<{}, { isLoaded: boolean, data: any[] }> {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "laanebelop": 2000000,
-                "nominellRente": 3,
+                "laanebelop": this.props.loanAmount,
+                "nominellRente": this.props.interest,
                 "terminGebyr":30,
-                "utlopsDato":"2045-01-01",
-                "saldoDato":"2020-01-01",
-                "datoForsteInnbetaling":"2020-02-01",
+                "utlopsDato":this.props.expirationYear + "-01-01",
+                "saldoDato":"2021-01-01",
+                "datoForsteInnbetaling":"2021-02-01",
                 "ukjentVerdi":"TERMINBELOP"
             })
         })
