@@ -6,6 +6,7 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  ResponsiveContainer,
 } from "recharts";
 
 type Props = { loanAmount: number; expirationYear: number; interest: number };
@@ -71,24 +72,26 @@ class Chart extends React.Component<Props, { isLoaded: boolean; data: any[] }> {
     const data = this.state.data.slice(1);
 
     return (
-      <LineChart
-        width={800}
-        height={600}
-        data={data}
-        margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-      >
-        <XAxis dataKey="dato" />
-        <YAxis />
-        <Tooltip />
-        <CartesianGrid stroke="#ddd" />
-        <Line
-          type="linear"
-          dot={this.props.expirationYear < 2030}
-          dataKey="innbetaling"
-          stroke="#ff7300"
-          yAxisId={0}
-        />
-      </LineChart>
+      <div style={{ width: 800, height: 600 }}>
+        <ResponsiveContainer width={800} height="80%">
+          <LineChart
+            data={data}
+            margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+          >
+            <XAxis dataKey="dato" />
+            <YAxis />
+            <Tooltip />
+            <CartesianGrid stroke="#ddd" />
+            <Line
+              type="linear"
+              dot={this.props.expirationYear < 2030}
+              dataKey="innbetaling"
+              stroke="#ff7300"
+              yAxisId={0}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     );
   }
 }
