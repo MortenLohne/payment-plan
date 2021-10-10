@@ -1,6 +1,6 @@
 # payment-plan
 
-Leke-webapp for å beregne en hypotetisk nedbetalingsplan. Laget med React+Typescript, startet fra `create-react-app`. 
+Leke-webapp for å beregne en hypotetisk nedbetalingsplan. Laget med React+Typescript, startet fra `create-react-app`.
 
 ## Build
 
