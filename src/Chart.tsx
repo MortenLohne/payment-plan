@@ -1,5 +1,12 @@
 import React from "react";
-import { LineChart, Line, XAxis, Tooltip, CartesianGrid } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 
 type Props = { loanAmount: number; expirationYear: number; interest: number };
 
@@ -71,10 +78,12 @@ class Chart extends React.Component<Props, { isLoaded: boolean; data: any[] }> {
         margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
       >
         <XAxis dataKey="dato" />
+        <YAxis />
         <Tooltip />
-        <CartesianGrid stroke="#f5f5f5" />
+        <CartesianGrid stroke="#ddd" />
         <Line
-          type="monotone"
+          type="linear"
+          dot={this.props.expirationYear < 2030}
           dataKey="innbetaling"
           stroke="#ff7300"
           yAxisId={0}
