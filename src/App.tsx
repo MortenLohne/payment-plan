@@ -29,6 +29,9 @@ class App extends React.Component<{}, AppState> {
     return (
       <div className="App">
         <img src={ccue} alt="logo" />
+        <br />
+        Interessert i langtidslån? Se hvor store dine månedlige nedbetalinger
+        kan bli!
         <DataEntry handleChartDataChange={this.handleChartDataChange} />
         {this.state.chartData && (
           <Chart

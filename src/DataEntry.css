@@ -1,12 +1,15 @@
 .textFields {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
   font-size: larger;
+  padding-top: 8px;
+  padding-bottom: 12px;
 }
 
 .submitButton {
-  font-size: large;
+  font-size: larger;
   width: 110px;
-  height: 30;
+  height: 28px;
 }
