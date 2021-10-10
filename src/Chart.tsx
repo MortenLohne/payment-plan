@@ -1,3 +1,4 @@
+import "./Chart.css";
 import React from "react";
 import {
   LineChart,
@@ -72,7 +73,7 @@ class Chart extends React.Component<Props, { isLoaded: boolean; data: any[] }> {
     const data = this.state.data.slice(1);
 
     return (
-      <div style={{ width: 800, height: 600 }}>
+      <div className="Chart">
         <ResponsiveContainer width={800} height="80%">
           <LineChart
             data={data}
