@@ -1,3 +1,4 @@
+import "./DataEntry.css";
 import React from "react";
 import { ChartData } from "./App";
 
@@ -43,20 +44,25 @@ class DataEntry extends React.Component<
   render() {
     return (
       <form onSubmit={this.handleLoanSubmit}>
-        Lån:
-        <input
-          type="text"
-          value={this.state.loanAmount}
-          onChange={this.handleLoanChange}
-        />
-        Nedbetalingstid (år):
-        <input
-          type="text"
-          value={this.state.expirationYear}
-          onChange={this.handleYearChange}
-        />
-        <br />
-        <input type="submit" value="Sumbit" />
+        <div className="textFields">
+          <span>
+            Lån:
+            <input
+              type="text"
+              value={this.state.loanAmount}
+              onChange={this.handleLoanChange}
+            />
+          </span>
+          <span>
+            Nedbetalingstid (år):
+            <input
+              type="text"
+              value={this.state.expirationYear}
+              onChange={this.handleYearChange}
+            />
+          </span>
+        </div>
+        <input className="submitButton" type="submit" value="Regn ut" />
       </form>
     );
   }
