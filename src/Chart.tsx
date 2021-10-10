@@ -12,7 +12,10 @@ class Chart extends React.Component<Props, { isLoaded: boolean, data: any[] }> {
         }
     }
 
-    componentDidMount() {
+    componentDidUpdate(prevProps: Props) {
+        if (this.props === prevProps) {
+            return;
+        }
         fetch("https://visningsrom.stacc.com/dd_server_laaneberegning/rest/laaneberegning/v1/nedbetalingsplan", 
         { method: "POST",
             headers: {
