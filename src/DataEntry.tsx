@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { ChartData } from './App'
 
 class DataEntry extends React.Component<{handleChartDataChange: (chartData: ChartData) => void,}, ChartData> {

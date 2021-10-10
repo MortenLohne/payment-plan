@@ -12,10 +12,7 @@ class Chart extends React.Component<Props, { isLoaded: boolean, data: any[] }> {
         }
     }
 
-    componentDidUpdate(prevProps: Props) {
-        if (this.props === prevProps) {
-            return;
-        }
+    fetchData() {
         fetch("https://visningsrom.stacc.com/dd_server_laaneberegning/rest/laaneberegning/v1/nedbetalingsplan", 
         { method: "POST",
             headers: {
@@ -42,6 +39,17 @@ class Chart extends React.Component<Props, { isLoaded: boolean, data: any[] }> {
         .catch((error) => {
             console.error('Error:', error);
           });
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    componentDidUpdate(prevProps: Props) {
+        if (this.props === prevProps) {
+            return;
+        }
+        this.fetchData();
     }
 
     render() {
