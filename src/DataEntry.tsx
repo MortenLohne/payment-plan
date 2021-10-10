@@ -7,6 +7,7 @@ class DataEntry extends React.Component<{handleChartDataChange: (chartData: Char
         
         this.handleLoanChange = this.handleLoanChange.bind(this);
         this.handleLoanSubmit = this.handleLoanSubmit.bind(this);
+        this.handleYearChange = this.handleYearChange.bind(this);
 
         this.state = {
             loanAmount: 2000000,
@@ -20,6 +21,11 @@ class DataEntry extends React.Component<{handleChartDataChange: (chartData: Char
         this.setState(({loanAmount: parseInt(event.target.value)}));
     }
 
+    handleYearChange(event: {target: HTMLInputElement}) {
+        console.log("Year changed to " + event.target.value);
+        this.setState(({expirationYear: parseInt(event.target.value)}));
+    }
+
     handleLoanSubmit(event: any) {
         event.preventDefault();
         console.log("Loan submitted to " + event.target.value + ", stored " + this.state.loanAmount);
@@ -29,10 +35,11 @@ class DataEntry extends React.Component<{handleChartDataChange: (chartData: Char
     render() {
         return (
             <form onSubmit={this.handleLoanSubmit}>
-                <label>
-                    Lån:
-                    <input type="text" value={this.state.loanAmount} onChange={this.handleLoanChange} />
-                </label>
+                Lån:
+                <input type="text" value={this.state.loanAmount} onChange={this.handleLoanChange} />
+                Nedbetalingstid (år):
+                <input type="text" value={this.state.expirationYear} onChange={this.handleYearChange} />
+                <br/>
                 <input type="submit" value="Sumbit" />
             </form>
         )
