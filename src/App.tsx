@@ -22,23 +22,15 @@ class App extends React.Component<{}, AppState> {
   }
 
   render() {
-      if (this.state.chartData) {
-        return (
-          <div className="App">
-            <img src={ccue} alt="logo"/>
-            <DataEntry handleChartDataChange={this.handleChartDataChange}/>
-            <Chart loanAmount={this.state.chartData.loanAmount} expirationYear={this.state.chartData.expirationYear} interest={this.state.chartData.interest}/>
-          </div>
-        )
-      }
-      else {
-        return (
-          <div className="App">
-            <img src={ccue} alt="logo"/>
-            <DataEntry handleChartDataChange={this.handleChartDataChange}/>
-          </div>
-        )
-      }
+      return (
+        <div className="App">
+          <img src={ccue} alt="logo"/>
+          <DataEntry handleChartDataChange={this.handleChartDataChange}/>
+          {this.state.chartData 
+            && <Chart loanAmount={this.state.chartData.loanAmount} expirationYear={this.state.chartData.expirationYear} interest={this.state.chartData.interest}/> 
+          }
+        </div>
+      )
   }
 }
 

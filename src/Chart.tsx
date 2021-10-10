@@ -57,8 +57,8 @@ class Chart extends React.Component<Props, { isLoaded: boolean, data: any[] }> {
             
         return (
             <LineChart
-            width={1200}
-            height={800}
+            width={800}
+            height={600}
             data={data}
             margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
         >
