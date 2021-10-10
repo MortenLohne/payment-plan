@@ -8,7 +8,7 @@ type AppState = { chartData?: ChartData };
 
 export type ChartData = {
   loanAmount: number;
-  expirationYear: number;
+  loanDuration: number;
   interest: number;
 };
 
@@ -33,7 +33,7 @@ class App extends React.Component<{}, AppState> {
         {this.state.chartData && (
           <Chart
             loanAmount={this.state.chartData.loanAmount}
-            expirationYear={this.state.chartData.expirationYear}
+            expirationYear={2021 + this.state.chartData.loanDuration}
             interest={this.state.chartData.interest}
           />
         )}

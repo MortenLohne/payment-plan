@@ -16,7 +16,7 @@ class DataEntry extends React.Component<
     this.state = {
       loanAmount: 2000000,
       interest: 3.0,
-      expirationYear: 2046,
+      loanDuration: 25,
     };
   }
 
@@ -27,7 +27,7 @@ class DataEntry extends React.Component<
 
   handleYearChange(event: { target: HTMLInputElement }) {
     console.log("Year changed to " + event.target.value);
-    this.setState({ expirationYear: parseInt(event.target.value) });
+    this.setState({ loanDuration: parseInt(event.target.value) });
   }
 
   handleLoanSubmit(event: any) {
@@ -57,7 +57,7 @@ class DataEntry extends React.Component<
             Nedbetalingstid (år):
             <input
               type="text"
-              value={this.state.expirationYear}
+              value={this.state.loanDuration}
               onChange={this.handleYearChange}
             />
           </span>
