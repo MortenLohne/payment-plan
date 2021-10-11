@@ -1,6 +1,7 @@
 import "./Chart.css";
 import React from "react";
 import {
+  Legend,
   LineChart,
   Line,
   XAxis,
@@ -83,11 +84,29 @@ class Chart extends React.Component<Props, { isLoaded: boolean; data: any[] }> {
             <YAxis />
             <Tooltip />
             <CartesianGrid stroke="#ddd" />
+            <Legend verticalAlign="top" height={36} />
             <Line
+              name="Innbetaling"
               type="linear"
               dot={this.props.expirationYear < 2030}
               dataKey="innbetaling"
               stroke="#ff7300"
+              yAxisId={0}
+            />
+            <Line
+              name="Renter"
+              type="linear"
+              dot={this.props.expirationYear < 2030}
+              dataKey="renter"
+              stroke="#0073ff"
+              yAxisId={0}
+            />
+            <Line
+              name="Total betaling"
+              type="linear"
+              dot={this.props.expirationYear < 2030}
+              dataKey="total"
+              stroke="#555"
               yAxisId={0}
             />
           </LineChart>
